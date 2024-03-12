@@ -4,7 +4,7 @@ class Tcolor{
   static Color get primary => const Color(0xffD7AB3B);
   static Color get primaryText => const Color(0xffDBCDB2);
   static Color get secondaryText => const Color(0xff000000);
-  //static Color get textField => const Color();
+  static Color get textField => const Color(0xffDBCDB2);
   static Color get placeHolder => const Color(0xff9C9891);
   static Color get white => const Color(0xffffffff);
 }
