@@ -1,4 +1,8 @@
+import 'package:chopnow/common/color_extension.dart';
+import 'package:chopnow/common_widget/round_button.dart';
+import 'package:chopnow/views/Login/login_view.dart';
 import 'package:flutter/material.dart';
+
 
 class NextPage extends StatelessWidget {
   const NextPage({super.key});
@@ -6,12 +10,33 @@ class NextPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-      backgroundColor: const Color.fromARGB(255, 188, 32, 32), // Background color for the next page
+      backgroundColor: Tcolor.secondaryText, // Background color for the next page
       body: Center(
-        child: Text(
-          'Next Page', // Content of the next page
-          style: TextStyle(fontSize: 24, color: Colors.black),
-        ),
+        child: 
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25),
+                child: RoundButton(title: "Login", onPressed:(){
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const LoginView()
+                  ),
+                  );
+                }, 
+                ),
+              ),
+              const SizedBox(height: 20),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25),
+                child: RoundButton(title: "Create Account", onPressed:(){} ),
+              )
+
+            ],
+          ),
+          
       ),
     );
   }
