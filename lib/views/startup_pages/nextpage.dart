@@ -1,6 +1,7 @@
 import 'package:chopnow/common/color_extension.dart';
 import 'package:chopnow/common_widget/round_button.dart';
 import 'package:chopnow/views/Login/login_view.dart';
+import 'package:chopnow/views/Signup/sigupView.dart';
 import 'package:flutter/material.dart';
 
 
@@ -31,7 +32,14 @@ class NextPage extends StatelessWidget {
               const SizedBox(height: 20),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25),
-                child: RoundButton(title: "Create Account", onPressed:(){} ),
+                child: RoundButton(title: "Create Account", onPressed:(){
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const SignUpView()
+                  ),
+                  );
+                } ),
               )
 
             ],

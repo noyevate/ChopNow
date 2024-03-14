@@ -1,6 +1,7 @@
 import 'package:chopnow/common/color_extension.dart';
 import 'package:chopnow/common_widget/round_button.dart';
 import 'package:chopnow/common_widget/round_textfield.dart';
+import 'package:chopnow/views/Signup/sigupView.dart';
 import 'package:flutter/material.dart';
 
 class LoginView extends StatefulWidget {
@@ -59,7 +60,40 @@ class _LoginViewState extends State<LoginView> {
             const SizedBox(
               height: 25,
             ),
-            RoundButton(title: "Login", onPressed: (){})
+            RoundButton(title: "Login", onPressed: (){}),
+            
+            const SizedBox( height: 40,),
+
+            TextButton(onPressed: (){
+              Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const SignUpView()
+                  ),
+                  );
+            }, child: 
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  "Don't have an account? ",
+                  style: TextStyle(
+                    color: Tcolor.Text,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w400
+                  ),          
+                ),
+                Text(
+                  "SignUp",
+                  style: TextStyle(
+                    color: Tcolor.primary,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w400
+                  ),
+                )
+              ],
+            )
+            )
             ],
           ),
         )

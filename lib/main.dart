@@ -1,10 +1,10 @@
 import 'package:chopnow/common/color_extension.dart';
-import 'package:chopnow/views/startup_pages/startup_page.dart';
+import 'package:chopnow/views/entrypoint.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 
-  Widget defaultHome = const StartupPage(); 
+  Widget defaultHome =  MainScreen(); 
 
 void main() {
   runApp(const MyApp());
@@ -31,8 +31,8 @@ class MyApp extends StatelessWidget {
           title: 'Chopnow',
           // You can use the library anywhere in the app even in theme
           theme: ThemeData(
-            scaffoldBackgroundColor: Tcolor.primary,
-            iconTheme: IconThemeData(color: Color.fromRGBO(12, 21, 12, 0.5)),
+            scaffoldBackgroundColor: Tcolor.white,
+            iconTheme: IconThemeData(color: Tcolor.primary),
             primarySwatch: Colors.blueGrey,
             textTheme: Typography.englishLike2018.apply(fontSizeFactor: 1.sp),
           ),

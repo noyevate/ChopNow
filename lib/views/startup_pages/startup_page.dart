@@ -11,7 +11,7 @@ class StartupPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Future.delayed(const Duration(seconds: 7), () {
-      Get.off(NextPage()); // Navigate to the next page after 3 seconds
+      Get.off(const NextPage()); // Navigate to the next page after 3 seconds
     });
     return Scaffold(
       body: Stack(
