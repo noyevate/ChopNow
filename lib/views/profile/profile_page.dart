@@ -11,9 +11,7 @@ class ProfilePage extends StatelessWidget {
         title: const Text('Profile'),
         backgroundColor: Tcolor.textField,
       ),
-      body: const Center(
-        child: Text("Profile Page"),
-      ),
+       body: Center(child: Text("Profile", style: TextStyle(color: Tcolor.secondaryText, fontSize: 20),))
     );
   }
   String getTimeOfDay() {

@@ -11,9 +11,8 @@ class SupportPage extends StatelessWidget {
         title: const Text('Support'),
         backgroundColor: Tcolor.textField,
       ),
-      body: const Center(
-        child: Text("SupportPage"),
-      ),
+       body: Center(child: Text("Support", style: TextStyle(color: Tcolor.secondaryText, fontSize: 20),)),
+      
     );
   }
 }

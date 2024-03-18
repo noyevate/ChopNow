@@ -21,13 +21,13 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       backgroundColor: Colors.transparent,
       elevation: 0,
       leading: CircleAvatar(
-        backgroundColor: const Color.fromARGB(255, 244, 184, 5),
+        backgroundColor: Tcolor.primary,
         backgroundImage: NetworkImage(leftAvatarImageUrl),
       ),
       actions:  [
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10.0),
-          child: Text(getTimeOfDay(), style: const TextStyle(fontSize: 20),)
+          child: Text(getTimeOfDay(), style: const TextStyle(fontSize: 35),)
           
         ),
       ],
@@ -50,7 +50,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => const Size.fromHeight(100); // Increase the size of the app bar
+  Size get preferredSize => const Size.fromHeight(70); // Increase the size of the app bar
 
   String getTimeOfDay() {
     final now = DateTime.now();

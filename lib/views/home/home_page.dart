@@ -1,6 +1,8 @@
 // ignore_for_file: unused_import
 
 import 'package:chopnow/common/custom_appbar.dart';
+import 'package:chopnow/common/custom_container.dart';
+import 'package:chopnow/views/home/widgets/category_list.dart';
 import 'package:flutter/material.dart';
 import 'package:chopnow/common/color_extension.dart';
 
@@ -9,16 +11,22 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      appBar: CustomAppBar( // Use your custom app bar
+    return  Scaffold(
+      appBar: const CustomAppBar( // Use your custom app bar
         leftAvatarImageUrl: 'https://fecofoods.com.ng/cook-delicious-amala.png',
         //rightAvatarImageUrl: 'right_avatar_image_url',
         deliverToText: 'Deliver to: ',
         childText: 'No 5, makoko Ave. Lagos',
       ),
-      body: Center(
-        child: Text("HomePage"),
+      body: SafeArea(child: CustomContainer(containerContent: 
+      const Column(
+        children: [
+          
+          SingleChildScrollView(child: CategoryList())
+        ],
       ),
+      ),
+      )
     );
   }
 }

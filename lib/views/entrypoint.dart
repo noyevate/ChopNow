@@ -1,7 +1,7 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:chopnow/common/color_extension.dart';
-import 'package:chopnow/common/size.dart';
+//import 'package:chopnow/common/size.dart';
 import 'package:chopnow/controller/tab_index_controller.dart';
 import 'package:chopnow/views/cart/cart_page.dart';
 import 'package:chopnow/views/home/home_page.dart';
@@ -31,15 +31,6 @@ class MainScreen extends StatelessWidget {
       body: Stack(
         children: [
           pageList[controller.tabIndex],
-          Container(
-            height: height,
-            width: width,
-            decoration: const BoxDecoration(
-              image: DecorationImage(image: AssetImage('assets/img/splash_bg.png'),
-              fit: BoxFit.cover
-              ),
-            ),
-          ),
           
           Align(
             alignment: Alignment.bottomCenter,

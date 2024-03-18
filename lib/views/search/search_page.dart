@@ -11,9 +11,8 @@ class SearchPage extends StatelessWidget {
         title: const Text('Search'),
         backgroundColor: Tcolor.textField,
       ),
-      body: const Center(
-        child: Text("Search Page"),
-      ),
+       body: Center(child: Text("Search", style: TextStyle(color: Tcolor.secondaryText, fontSize: 20),))
+      
     );
   }
 }

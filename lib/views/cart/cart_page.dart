@@ -11,9 +11,7 @@ class CartPage extends StatelessWidget {
         title: const Text('Cart'),
         backgroundColor: Tcolor.textField,
       ),
-      body:  Center(
-        child: Text("Cart page"),
-      ),
+       body: Center(child: Text("Cart", style: TextStyle(color: Tcolor.secondaryText, fontSize: 20),))
     );
   }
 }
