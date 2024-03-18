@@ -1,5 +1,6 @@
 // ignore_for_file: unused_import
 
+import 'package:chopnow/common/background_container.dart';
 import 'package:chopnow/common/custom_appbar.dart';
 import 'package:chopnow/common/custom_container.dart';
 import 'package:chopnow/views/home/widgets/category_list.dart';
@@ -19,11 +20,14 @@ class HomePage extends StatelessWidget {
         childText: 'No 5, makoko Ave. Lagos',
       ),
       body: SafeArea(child: CustomContainer(containerContent: 
-      const Column(
-        children: [
-          
-          SingleChildScrollView(child: CategoryList())
-        ],
+      BackgroundContainer(
+        color: Tcolor.white,
+        child: const Column(
+          children: [
+            
+            SingleChildScrollView(child: CategoryList())
+          ],
+        ),
       ),
       ),
       )

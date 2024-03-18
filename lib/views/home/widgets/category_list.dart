@@ -23,7 +23,7 @@ class CategoryList extends StatelessWidget {
             //print(category);
             return CategoryWidget(  category: category); 
           }),
-        )
+        ),
       
     );
   }
