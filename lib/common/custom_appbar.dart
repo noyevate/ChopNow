@@ -55,7 +55,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   String getTimeOfDay() {
     final now = DateTime.now();
     final hour = now.hour;
-    if(hour >= 0 && hour < 8){
+    if(hour >= 17 && hour < 7){
       return '🌙';
     } else if(hour >= 16 && hour < 18){
       return '⛅';

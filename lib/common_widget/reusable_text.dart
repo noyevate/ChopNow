@@ -15,6 +15,7 @@ class ReuseableText extends StatelessWidget {
     return Text(
       title,
       style: style,
+      textAlign: TextAlign.left,
     );
   }
 }

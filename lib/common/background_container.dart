@@ -1,4 +1,3 @@
-import 'package:chopnow/common/color_extension.dart';
 import 'package:chopnow/common/size.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -24,6 +23,7 @@ class BackgroundContainer extends StatelessWidget {
         AssetImage("assets/img/splash_bg.png"),
         fit: BoxFit.cover,
         opacity: .7,
+        
 
         )
       ),

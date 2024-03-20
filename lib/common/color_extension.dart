@@ -8,4 +8,5 @@ class Tcolor{
   static Color get placeHolder => Color.fromARGB(255, 226, 225, 222);
   static Color get white => const Color(0xffffffff);
   static Color get Text => const Color(0xff413E34);
+  static Color get red => Color.fromARGB(255, 233, 14, 14);
 }
