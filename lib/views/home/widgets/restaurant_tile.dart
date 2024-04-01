@@ -1,6 +1,7 @@
 import 'package:chopnow/common/color_extension.dart';
 import 'package:chopnow/common/size.dart';
 import 'package:chopnow/common_widget/reusable_text.dart';
+import 'package:chopnow/models/restaurant.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -8,7 +9,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class RestaurantTile extends StatelessWidget {
   const RestaurantTile({super.key, required this.restaurant});
 
-  final dynamic restaurant;
+  final RestaurantModel restaurant;
 
   @override
   Widget build(BuildContext context) {
@@ -36,8 +37,8 @@ class RestaurantTile extends StatelessWidget {
                         SizedBox(
                           width: 70,
                           height: 70,
-                          child: Image.asset(
-                            restaurant['image'],
+                          child: Image.network(
+                            restaurant.imageUrl,
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -69,13 +70,13 @@ class RestaurantTile extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       ReuseableText(
-                          title: restaurant['name'],
+                          title: restaurant.title,
                           style: TextStyle(
                               fontSize: 13,
                               color: Tcolor.Text,
                               fontWeight: FontWeight.w400)),
                       ReuseableText(
-                          title: "Delivery time: ${restaurant['time']}",
+                          title: "Delivery time: ${restaurant.time}",
                           style: TextStyle(
                               fontSize: 13,
                               color: Tcolor.secondaryText,
@@ -83,7 +84,7 @@ class RestaurantTile extends StatelessWidget {
                       SizedBox(
                         width: width * 0.7,
                         child: Text(
-                          restaurant["coords"]["address"],
+                          restaurant.coords.address,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
                               fontSize: 13,
@@ -104,13 +105,13 @@ class RestaurantTile extends StatelessWidget {
                 width: 80.w,
                 height: 30.h,
                 decoration: BoxDecoration(
-                    color: restaurant['isAvailable'] == true ||
-                            restaurant['isAvailable'] == null
+                    color: restaurant.isAvailabe == true ||
+                            restaurant.isAvailabe == null
                         ? Tcolor.primary
                         : Tcolor.red,
                         borderRadius: BorderRadius.circular(10.r)),
-                        child: Center(child: ReuseableText(title: restaurant['isAvailable'] == true ||
-                            restaurant['isAvailable'] == null ? "Open" : "Closed", style: TextStyle(fontSize: 12, color: Tcolor.white, fontWeight: FontWeight.w600))),
+                        child: Center(child: ReuseableText(title: restaurant.isAvailabe == true ||
+                            restaurant.isAvailabe == null ? "Open" : "Closed", style: TextStyle(fontSize: 12, color: Tcolor.white, fontWeight: FontWeight.w600))),
               ))
         ],
       ),

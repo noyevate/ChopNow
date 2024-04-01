@@ -2,14 +2,14 @@ import 'package:chopnow/common/color_extension.dart';
 import 'package:flutter/material.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  final String leftAvatarImageUrl;
+  //final String leftAvatarImageUrl;
   //final String rightAvatarImageUrl;
   final String deliverToText;
   final String childText;
 
   const CustomAppBar({
     Key? key,
-    required this.leftAvatarImageUrl,
+     //this.leftAvatarImageUrl = "assets/img/tab_offer.png",
     //required this.rightAvatarImageUrl,
     required this.deliverToText,
     required this.childText,
@@ -22,7 +22,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       elevation: 0,
       leading: CircleAvatar(
         backgroundColor: Tcolor.primary,
-        backgroundImage: NetworkImage(leftAvatarImageUrl),
+        //backgroundImage: NetworkImage(leftAvatarImageUrl),
       ),
       actions:  [
         Padding(
@@ -53,16 +53,18 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   Size get preferredSize => const Size.fromHeight(70); // Increase the size of the app bar
 
   String getTimeOfDay() {
-    final now = DateTime.now();
-    final hour = now.hour;
-    if(hour >= 17 && hour < 7){
-      return '🌙';
-    } else if(hour >= 16 && hour < 18){
-      return '⛅';
-    } else {
-      return '☀️';
-    }
+  final now = DateTime.now();
+  final hour = now.hour;
+
+  if (hour >= 7 && hour < 16) {
+    return '☀️'; // Between 7am and 4pm
+  } else if (hour >= 16 && hour < 19) {
+    return '⛅'; // Between 4pm and 7pm
+  } else {
+    return '🌙'; // Between 7pm and 7am
   }
+}
+
 }
 
 

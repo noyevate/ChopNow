@@ -1,28 +1,41 @@
-import 'package:chopnow/common/uidata.dart';
+import 'package:chopnow/common/color_extension.dart';
+import 'package:chopnow/hooks/fetch_foods.dart';
+import 'package:chopnow/models/food_model.dart';
 import 'package:chopnow/views/home/widgets/food_widget.dart';
+import 'package:chopnow/views/home/widgets/shimmers/nearby_restaurant_shimmer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class FoodList extends StatelessWidget {
-  const FoodList({super.key});
+class FoodList extends HookWidget {
+  const FoodList({Key? key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 240.h,
-      padding: EdgeInsets.only(left: 12.w, top: 10.h),
-      child: ListView(
-        scrollDirection: Axis.horizontal,
-        children: List.generate(foods.length, (i) {
-          var food = foods[i];
-          //print(restaurants);
-          return FoodWidget(
-              image: food["image"],
-              title: food['name'],
-              time: food['time'],
-              price: food['price'].toString());
-        }),
-      ),
-    );
+    final hookResults = useFetchFoods("0987654321");
+    List<FoodModel>? foods = hookResults.data;
+    final isLoading = hookResults.isLoading;
+
+    return isLoading
+        ? const RestaurantShimmer() // Display shimmer while loading
+        
+            : Container(
+                height: 240.h,
+                padding: EdgeInsets.only(left: 12.w, top: 10.h),
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: foods?.length,
+                  itemBuilder: (context, index) {
+                    FoodModel food = foods![index];
+                    return FoodWidget(
+                      image: food.imageUrl.isNotEmpty ? food.imageUrl[0] : '', // Adjust this line
+                      title: food.title,
+                      time: food.time,
+                      price: food.price.toString(),
+                    );
+                  },
+                ));
+              
+            // Display a placeholder if no data is available
   }
 }

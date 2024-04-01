@@ -1,6 +1,7 @@
 import 'package:chopnow/common/color_extension.dart';
 import 'package:chopnow/common/size.dart';
 import 'package:chopnow/common_widget/reusable_text.dart';
+import 'package:chopnow/models/food_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -9,7 +10,7 @@ import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 class FoodTile extends StatelessWidget {
   const FoodTile({super.key, required this.food});
 
-  final dynamic food;
+  final FoodModel food;
 
   @override
   Widget build(BuildContext context) {
@@ -37,8 +38,8 @@ class FoodTile extends StatelessWidget {
                         SizedBox(
                           width: 70,
                           height: 70,
-                          child: Image.asset(
-                            food['image'],
+                          child: Image.network(
+                            food.imageUrl[0],
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -70,13 +71,13 @@ class FoodTile extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       ReuseableText(
-                          title: food['name'],
+                          title: food.title,
                           style: TextStyle(
                               fontSize: 13,
                               color: Tcolor.Text,
                               fontWeight: FontWeight.w400)),
                       ReuseableText(
-                          title: "Delivery time: ${food['time']}",
+                          title: "Delivery time: ${food.time}",
                           style: TextStyle(
                               fontSize: 13,
                               color: Tcolor.secondaryText,
@@ -99,7 +100,7 @@ class FoodTile extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10.r)),
               child: Center(
                 child: ReuseableText(
-                  title: "\u20A6${food['price'].toString()}",
+                  title: "\u20A6${food.price.toString()}",
                   style: TextStyle(
                       fontSize: 12,
                       color: Tcolor.white,

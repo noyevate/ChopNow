@@ -1,15 +1,15 @@
 List<dynamic> categories = [
   
-    {"image": "assets/img/cat_offer.png", "name": "Offers", "_id": "bdjdsvwehqiehqkwekew33473373"},
-    {"image": "assets/img/cat_sri.png", "name": "Sri Lankan", "_id": "ehgihu3h3y34r4fu4h33i43j4i"},
-    {"image": "assets/img/cat_3.png", "name": "Italian", "_id": "kjhuhru4h3uh34uhr4uhruh34ruih3r4"},
-    {"image": "assets/img/cat_4.png", "name": "ooe0", "_id": "jfh43y429282hr8r92ur28r9rur239u3"},
-    {"image": "assets/img/cat_sri.png", "name": "More", "_id": "jdufrif4389748rf433434rfrf"},
-    {"image": "assets/img/cat_3.png", "name": "yobe", "_id": "dhidijeu348348jjdijdiej9u3939u3"},
-    {"image": "assets/img/cat_4.png", "name": "Taa taa", "_id": "njdcndkjiejiej8943847685efjkenfke"},
-    {"image": "assets/img/cat_sri.png", "name": "tywe Lankan", "_id": "jidiejijwiejdieji3dij3ijd3"},
-    {"image": "assets/img/cat_3.png", "name": "Lucomba", "_id": "jkcmxmeojou93u4r834rrijrkrwk"},
-    {"image": "assets/img/cat_4.png", "name": "Marcosa", "_id": "jhdih3489yr38y3r8934y384yrhr"},
+    {"image": "assets/img/cat_offer.png", "name": "Offers", "_id": "bdjdsvwehqiehqkwekew33473373", "value": "Offers",},
+    {"image": "assets/img/cat_sri.png", "name": "Sri Lankan", "_id": "ehgihu3h3y34r4fu4h33i43j4i", "value": "Offers",},
+    {"image": "assets/img/cat_3.png", "name": "Italian", "_id": "kjhuhru4h3uh34uhr4uhruh34ruih3r4", "value": "Offers",},
+    {"image": "assets/img/cat_4.png", "name": "ooe0", "_id": "jfh43y429282hr8r92ur28r9rur239u3", "value": "Offers",},
+    {"image": "assets/img/cat_sri.png", "name": "More", "_id": "jdufrif4389748rf433434rfrf", "value": "More",},
+    {"image": "assets/img/cat_3.png", "name": "yobe", "_id": "dhidijeu348348jjdijdiej9u3939u3", "value": "Offers",},
+    {"image": "assets/img/cat_4.png", "name": "Taa taa", "_id": "njdcndkjiejiej8943847685efjkenfke", "value": "Offers",},
+    {"image": "assets/img/cat_sri.png", "name": "tywe Lankan", "_id": "jidiejijwiejdieji3dij3ijd3", "value": "Offers",},
+    {"image": "assets/img/cat_3.png", "name": "Lucomba", "_id": "jkcmxmeojou93u4r834rrijrkrwk", "value": "Offers",},
+    {"image": "assets/img/cat_4.png", "name": "Marcosa", "_id": "jhdih3489yr38y3r8934y384yrhr", "value": "Offers",},
 ];
 
 List<dynamic> restaurants = [

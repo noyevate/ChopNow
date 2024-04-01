@@ -5,10 +5,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 
 class Heading extends StatelessWidget {
-  const Heading({super.key, required this.title, this.onTap});
+  const Heading({super.key, required this.title, this.onTap, this.more});
 
   final String title;
   final Function()? onTap;
+  final bool? more;
 
   @override
   Widget build(BuildContext context) {
@@ -23,14 +24,15 @@ class Heading extends StatelessWidget {
             ReuseableText(title: title, style: TextStyle(fontSize: 16, color: Tcolor.Text, fontWeight: FontWeight.w700),
             ),
             ),
-            GestureDetector(
+            more == null ? GestureDetector(
               onTap: onTap,
               child: Icon(
                 AntDesign.appstore1,
                 color: Tcolor.primary,
                 size: 30.sp,
               ),
-            )
+            ) :
+            const SizedBox.shrink()
         ],
       ),
     );
