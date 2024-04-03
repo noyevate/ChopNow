@@ -19,7 +19,7 @@ FetchFoods useFetchAllFoods(String code) {
     isLoading.value = true;
 
     try {
-      final  url = Uri.parse("$appBaseUrl/api/foods/ByCode/$code");    
+      final  url = Uri.parse("$appBaseUrl/api/foods/random/$code");    
       print(url.toString());
       final response = await http.get(url);
       print(response.statusCode);

@@ -2,20 +2,25 @@ import 'package:chopnow/common/color_extension.dart';
 import 'package:chopnow/common/size.dart';
 import 'package:chopnow/common_widget/reusable_text.dart';
 import 'package:chopnow/models/food_model.dart';
+import 'package:chopnow/views/Food/food_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
+import 'package:get/get.dart';
 
 class FoodTile extends StatelessWidget {
-  const FoodTile({super.key, required this.food});
+  const FoodTile({super.key, required this.food, this.color});
 
   final FoodModel food;
+  final Color? color;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Get.to(() => FoodPage(food: food));
+      },
       child: Stack(
         clipBehavior: Clip.hardEdge,
         children: [
@@ -24,7 +29,7 @@ class FoodTile extends StatelessWidget {
             height: 160.h,
             width: width,
             decoration: BoxDecoration(
-                color: Tcolor.placeHolder,
+                color: color??Tcolor.placeHolder,
                 borderRadius: BorderRadius.circular(20.r)),
             child: Container(
               padding: EdgeInsets.all(4.r),

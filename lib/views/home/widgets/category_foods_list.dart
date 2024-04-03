@@ -1,5 +1,6 @@
+import 'package:chopnow/common/color_extension.dart';
 import 'package:chopnow/common/size.dart';
-import 'package:chopnow/hooks/fetch_all_food.dart';
+import 'package:chopnow/hooks/fetch_category_foods.dart';
 import 'package:chopnow/models/food_model.dart';
 import 'package:chopnow/views/home/widgets/food_tile.dart';
 import 'package:chopnow/views/home/widgets/shimmers/food_list_shimer.dart';
@@ -12,7 +13,7 @@ class CategoryFoodsList extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final hookResults = useFetchAllFoods("0987654321");
+    final hookResults = useFetchFoodsByCategory("0987654321");
     List<FoodModel>? foods = hookResults.data;
     final isLoading = hookResults.isLoading;
     return SizedBox(
@@ -28,6 +29,7 @@ class CategoryFoodsList extends HookWidget {
                 FoodModel food = foods[i];
                 //print(restaurants);
                 return FoodTile(
+                  color: Tcolor.white,
                   food: food,
                 );
               }),

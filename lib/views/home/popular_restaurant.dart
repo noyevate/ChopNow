@@ -18,9 +18,11 @@ class PopularRestaurants extends HookWidget {
     final isLoading = hookResults.isLoading;
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Tcolor.primary,
       title: const Text("Popular Restaurants"),),
+      
       body: BackgroundContainer(
-        color: Tcolor.primary,
+        color: Tcolor.white,
         child: Padding(
           padding:  EdgeInsets.all(12.h),
           child: isLoading ? const FoodListShimmer() : ListView(

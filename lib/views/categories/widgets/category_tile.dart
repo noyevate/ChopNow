@@ -2,6 +2,7 @@
 
 import 'package:chopnow/common/color_extension.dart';
 import 'package:chopnow/common_widget/reusable_text.dart';
+import 'package:chopnow/controller/category_controller.dart';
 import 'package:chopnow/models/category.dart';
 import 'package:chopnow/views/categories/category_page.dart';
 import 'package:flutter/material.dart';
@@ -19,8 +20,11 @@ class CategoryTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(CategoryController());
     return ListTile(
       onTap: () {
+        controller.updateCategory = category.id;
+        controller.updateTitle = category.title;
         Get.to(() => const CategoryPage(),
         transition: Transition.fadeIn,
         duration: const Duration(milliseconds: 100));

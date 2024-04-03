@@ -21,7 +21,8 @@ FetchHook useFetchAllCategories() {
       final  url = Uri.parse("$appBaseUrl/api/category");    
       print(url.toString());
       final response = await http.get(url);
-     
+     print(response.statusCode);
+     print(response.body);
       if(response.statusCode == 200){
         categoriesItems.value = categoryModelFromJson(response.body);
       } else {

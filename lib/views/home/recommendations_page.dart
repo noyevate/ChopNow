@@ -20,6 +20,7 @@ class Recomendations extends HookWidget {
     final isLoading = hookResults.isLoading;
     return Scaffold(
         appBar: AppBar(
+          backgroundColor: Tcolor.primary,
           elevation: 0,
           title: ReuseableText(
             title: "Recomendations",

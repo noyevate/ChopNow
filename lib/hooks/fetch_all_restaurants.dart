@@ -22,7 +22,7 @@ FetchHook useFetchAllRestaurants(String code) {
       print(url.toString());
       final response = await http.get(url);
       
-      print(apiError);
+      print(response.body);
       if(response.statusCode == 200){
         restaurants.value = restaurantModelFromJson(response.body);
       } else {
