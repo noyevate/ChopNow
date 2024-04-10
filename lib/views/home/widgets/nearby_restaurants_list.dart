@@ -2,9 +2,11 @@ import 'package:chopnow/hooks/fetch_restaurants.dart';
 import 'package:chopnow/models/restaurant.dart';
 import 'package:chopnow/views/home/widgets/restaurant_widget.dart';
 import 'package:chopnow/views/home/widgets/shimmers/nearby_restaurant_shimmer.dart';
+import 'package:chopnow/views/restaurant/restaurant_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 class NearbyRestaurantsList extends HookWidget {
   const NearbyRestaurantsList({super.key});
@@ -25,6 +27,9 @@ class NearbyRestaurantsList extends HookWidget {
             //return Container();
             //print(restaurants);
             return RestaurantWidget(
+              onTap: () {
+                Get.to(() => RestaurantPage(restaurant: restaurant));
+              },
               image: restaurant.imageUrl, 
               logo: restaurant.logoUrl, 
               title: restaurant.title, 

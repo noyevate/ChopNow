@@ -2,6 +2,7 @@
 //
 //     final foodModel = foodModelFromJson(jsonString);
 
+import 'package:meta/meta.dart';
 import 'dart:convert';
 
 List<FoodModel> foodModelFromJson(String str) => List<FoodModel>.from(json.decode(str).map((x) => FoodModel.fromJson(x)));
@@ -9,22 +10,23 @@ List<FoodModel> foodModelFromJson(String str) => List<FoodModel>.from(json.decod
 String foodModelToJson(List<FoodModel> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class FoodModel {
-    String id;
-    String title;
-    String time;
-    List<String> foodTags;
-    String category;
-    List<String> foodType;
-    String code;
-    bool isAvailable;
-    String restaurant;
-    double rating;
-    String ratingCount;
-    String description;
-    int price;
-    List<dynamic> additive;
-    List<String> imageUrl;
-    
+    final String id;
+    final String title;
+    final String time;
+    final List<String> foodTags;
+    final String category;
+    final List<String> foodType;
+    final String code;
+    final bool isAvailable;
+    final String restaurant;
+    final double rating;
+    final String ratingCount;
+    final String description;
+    final int price;
+    final List<Additive> additive;
+    final List<String> imageUrl;
+    final DateTime createdAt;
+    final DateTime updatedAt;
 
     FoodModel({
         required this.id,
@@ -42,7 +44,8 @@ class FoodModel {
         required this.price,
         required this.additive,
         required this.imageUrl,
-       
+        required this.createdAt,
+        required this.updatedAt,
     });
 
     factory FoodModel.fromJson(Map<String, dynamic> json) => FoodModel(
@@ -59,9 +62,10 @@ class FoodModel {
         ratingCount: json["ratingCount"],
         description: json["description"],
         price: json["price"],
-        additive: List<dynamic>.from(json["additive"].map((x) => x)),
+        additive: List<Additive>.from(json["additive"].map((x) => Additive.fromJson(x))),
         imageUrl: List<String>.from(json["imageUrl"].map((x) => x)),
-        
+        createdAt: DateTime.parse(json["createdAt"]),
+        updatedAt: DateTime.parse(json["updatedAt"]),
     );
 
     Map<String, dynamic> toJson() => {
@@ -78,7 +82,33 @@ class FoodModel {
         "ratingCount": ratingCount,
         "description": description,
         "price": price,
-        "additive": List<dynamic>.from(additive.map((x) => x)),
+        "additive": List<dynamic>.from(additive.map((x) => x.toJson())),
         "imageUrl": List<dynamic>.from(imageUrl.map((x) => x)),
+        "createdAt": createdAt.toIso8601String(),
+        "updatedAt": updatedAt.toIso8601String(),
+    };
+}
+
+class Additive {
+    final int id;
+    final String title;
+    final String price;
+
+    Additive({
+        required this.id,
+        required this.title,
+        required this.price,
+    });
+
+    factory Additive.fromJson(Map<String, dynamic> json) => Additive(
+        id: json["id"],
+        title: json["title"],
+        price: json["price"],
+    );
+
+    Map<String, dynamic> toJson() => {
+        "id": id,
+        "title": title,
+        "price": price,
     };
 }

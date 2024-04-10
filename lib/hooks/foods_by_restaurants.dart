@@ -9,7 +9,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:http/http.dart' as http;
 
 
-FetchHook useFetchFoods(String code) {
+FetchHook useFetchRestaurantFoods(String id) {
   final food = useState<List<FoodModel>?>(null);
   final isLoading = useState<bool>(false);
   final error = useState<Exception?>(null);
@@ -20,19 +20,19 @@ FetchHook useFetchFoods(String code) {
     isLoading.value = true;
 
     try {
-      final  url = Uri.parse("$appBaseUrl/api/foods/random/$code");    
+      final  url = Uri.parse("$appBaseUrl/api/foods/restaurant-food/$id");    
       print(url.toString());
       final response = await http.get(url);
       print(response.statusCode);
-      print("foodList: ${response.body}");
+      print("Restaurant food lists: ${response.body}");
       if(response.statusCode == 200){
         food.value = foodModelFromJson(response.body);
       } else {
         apiError.value = apiErrorFromJson(response.body);
       }
     } catch (e) {
-    //debugPrint(e.toString());
-    error.value = e as Exception;
+    debugPrint(e.toString());
+    
   
     } finally {
       isLoading.value = false;

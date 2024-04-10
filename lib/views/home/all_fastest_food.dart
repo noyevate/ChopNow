@@ -14,29 +14,30 @@ class FastestFoods extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    
     final hookResults = useFetchAllFoods("0987654321");
     List<FoodModel>? foods = hookResults.data;
     final isLoading = hookResults.isLoading;
     return Scaffold(
-      appBar: AppBar(
-      title: const Text("Fastest Foods"),),
-      body: BackgroundContainer(
-        color: Tcolor.white,
-        child: isLoading ? const FoodListShimmer() : Padding(
-          padding:  EdgeInsets.all(12.h), 
-          child: ListView(
-          scrollDirection: Axis.vertical,
-          children: List.generate(foods!.length, (i) {
-            FoodModel food = foods[i];
-            //print(restaurants);
-            return FoodTile(
-              food: food,
-            );
-          }),
-                ),
+        appBar: AppBar(
+          title: const Text("Fastest Foods"),
         ),
-      )
-    );
+        body: BackgroundContainer(
+          color: Tcolor.white,
+          child: isLoading
+              ? const FoodListShimmer()
+              : Padding(
+                  padding: EdgeInsets.all(12.h),
+                  child: ListView(
+                    scrollDirection: Axis.vertical,
+                    children: List.generate(foods!.length, (i) {
+                      FoodModel food = foods[i];
+                      //print(restaurants);
+                      return FoodTile(
+                        food: food,
+                      );
+                    }),
+                  ),
+                ),
+        ));
   }
 }

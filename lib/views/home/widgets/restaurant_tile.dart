@@ -2,9 +2,11 @@ import 'package:chopnow/common/color_extension.dart';
 import 'package:chopnow/common/size.dart';
 import 'package:chopnow/common_widget/reusable_text.dart';
 import 'package:chopnow/models/restaurant.dart';
+import 'package:chopnow/views/restaurant/restaurant_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 class RestaurantTile extends StatelessWidget {
   const RestaurantTile({super.key, required this.restaurant});
@@ -14,7 +16,9 @@ class RestaurantTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Get.to(() => RestaurantPage(restaurant: restaurant));
+      },
       child: Stack(
         clipBehavior: Clip.hardEdge,
         children: [

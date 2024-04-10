@@ -9,7 +9,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class FoodList extends HookWidget {
-  const FoodList({Key? key});
+  const FoodList({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +38,8 @@ class FoodList extends HookWidget {
                       price: food.price.toString(),
                     );
                   },
-                ));
+                ),
+                );
               
             // Display a placeholder if no data is available
   }

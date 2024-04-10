@@ -29,7 +29,7 @@ class FoodTile extends StatelessWidget {
             height: 160.h,
             width: width,
             decoration: BoxDecoration(
-                color: color??Tcolor.placeHolder,
+                color: color ?? Tcolor.placeHolder,
                 borderRadius: BorderRadius.circular(20.r)),
             child: Container(
               padding: EdgeInsets.all(4.r),
@@ -76,18 +76,46 @@ class FoodTile extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       ReuseableText(
-                          title: food.title,
-                          style: TextStyle(
-                              fontSize: 13,
-                              color: Tcolor.Text,
-                              fontWeight: FontWeight.w400)),
+                        title: food.title,
+                        style: TextStyle(
+                            fontSize: 13,
+                            color: Tcolor.Text,
+                            fontWeight: FontWeight.w400),
+                      ),
                       ReuseableText(
-                          title: "Delivery time: ${food.time}",
-                          style: TextStyle(
-                              fontSize: 13,
-                              color: Tcolor.secondaryText,
-                              fontWeight: FontWeight.w400)),
-                      SizedBox(width: width * 0.7, child: Container())
+                        title: "Delivery time: ${food.time}",
+                        style: TextStyle(
+                            fontSize: 13,
+                            color: Tcolor.secondaryText,
+                            fontWeight: FontWeight.w400),
+                      ),
+                      // SizedBox(
+                      //   width: width * 0.7,
+                      //   height: 30.h,
+                      //   child: ListView.builder(
+                      //       scrollDirection: Axis.horizontal,
+                      //       itemCount: food.additive.length,
+                      //       itemBuilder: (context, i) {
+                      //         var additives = food.additive[i];
+                      //         return Container(
+                      //           margin: EdgeInsets.only(right: 10.w),
+                      //           decoration: BoxDecoration(
+                      //             color: Tcolor.placeHolder,
+                      //             borderRadius: BorderRadius.all(
+                      //               Radius.circular(15.r),
+                      //             ),
+                      //           ),
+                      //           child: Center(
+                      //             child: Padding(
+                      //               padding: EdgeInsets.all(4.h),
+                      //               child: ReuseableText(title: additives.title, style: TextStyle(
+                      //                 fontSize: 8,color: Tcolor.purplr, fontWeight: FontWeight.w400
+                      //               ),),
+                      //             ),
+                      //           ),
+                      //         );
+                      //       }),
+                      // )
                     ],
                   )
                 ],
@@ -118,7 +146,7 @@ class FoodTile extends StatelessWidget {
             right: 150.w,
             top: 3.h,
             child: GestureDetector(
-              onTap: (){},
+              onTap: () {},
               child: Container(
                 width: 40.w,
                 height: 40.h,
@@ -126,11 +154,15 @@ class FoodTile extends StatelessWidget {
                     color: Tcolor.primary,
                     borderRadius: BorderRadius.circular(10.r)),
                 child: Center(
-                  child: Icon(MaterialCommunityIcons.cart_plus, size: 40.h, color: Tcolor.white,),
-                )
+                  child: Icon(
+                    MaterialCommunityIcons.cart_plus,
+                    size: 40.h,
+                    color: Tcolor.white,
+                  ),
+                ),
               ),
             ),
-          )
+          ),
         ],
       ),
     );
