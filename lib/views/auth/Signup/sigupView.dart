@@ -1,7 +1,7 @@
 import 'package:chopnow/common/color_extension.dart';
 import 'package:chopnow/common_widget/round_button.dart';
 import 'package:chopnow/common_widget/round_textfield.dart';
-import 'package:chopnow/views/Login/login_view.dart';
+import 'package:chopnow/views/auth/Login/login_view.dart';
 import 'package:flutter/material.dart';
 
 class SignUpView extends StatefulWidget {

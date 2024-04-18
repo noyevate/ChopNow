@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "225674586010",
+    "project_id": "chop-now-71981",
+    "storage_bucket": "chop-now-71981.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:225674586010:android:55e389a33729105ae93c23",
+        "android_client_info": {
+          "package_name": "io.webflow.nobsafrica.chopnow"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "225674586010-kth515pqc7g2eskslohqe0h0lq5j9she.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBBVdaG22KFHUmEVXl2eOnmEHjbgley_XA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "225674586010-kth515pqc7g2eskslohqe0h0lq5j9she.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

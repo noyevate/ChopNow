@@ -89,33 +89,33 @@ class FoodTile extends StatelessWidget {
                             color: Tcolor.secondaryText,
                             fontWeight: FontWeight.w400),
                       ),
-                      // SizedBox(
-                      //   width: width * 0.7,
-                      //   height: 30.h,
-                      //   child: ListView.builder(
-                      //       scrollDirection: Axis.horizontal,
-                      //       itemCount: food.additive.length,
-                      //       itemBuilder: (context, i) {
-                      //         var additives = food.additive[i];
-                      //         return Container(
-                      //           margin: EdgeInsets.only(right: 10.w),
-                      //           decoration: BoxDecoration(
-                      //             color: Tcolor.placeHolder,
-                      //             borderRadius: BorderRadius.all(
-                      //               Radius.circular(15.r),
-                      //             ),
-                      //           ),
-                      //           child: Center(
-                      //             child: Padding(
-                      //               padding: EdgeInsets.all(4.h),
-                      //               child: ReuseableText(title: additives.title, style: TextStyle(
-                      //                 fontSize: 8,color: Tcolor.purplr, fontWeight: FontWeight.w400
-                      //               ),),
-                      //             ),
-                      //           ),
-                      //         );
-                      //       }),
-                      // )
+                      SizedBox(
+                        width: width * 0.7,
+                        height: 30.h,
+                        child: ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            itemCount: food.additive.length,
+                            itemBuilder: (context, i) {
+                              var additives = food.additive[i];
+                              return Container(
+                                margin: EdgeInsets.only(right: 10.w),
+                                decoration: BoxDecoration(
+                                  color: Tcolor.placeHolder,
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(15.r),
+                                  ),
+                                ),
+                                child: Center(
+                                  child: Padding(
+                                    padding: EdgeInsets.all(4.h),
+                                    child: ReuseableText(title: additives.title, style: TextStyle(
+                                      fontSize: 10,color: Tcolor.primary, fontWeight: FontWeight.w400
+                                    ),),
+                                  ),
+                                ),
+                              );
+                            }),
+                      )
                     ],
                   )
                 ],

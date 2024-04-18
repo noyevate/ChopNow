@@ -31,11 +31,9 @@ class _FoodPageState extends State<FoodPage> {
   final TextEditingController _preferences = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    
     final hookResult = useFetchRestaurant(widget.food.restaurant);
     final controller = Get.put(FoodController());
     controller.loadAdditives(widget.food.additive);
-    
 
     return Scaffold(
       body: ListView(
@@ -143,7 +141,7 @@ class _FoodPageState extends State<FoodPage> {
                     Obx(
                       () => ReuseableText(
                         title:
-                            "\u20A6 ${widget.food.price * controller.count.value}",
+                            "\u20A6 ${((widget.food.price + controller.additivePrice ) * controller.count.value)}",
                         style: TextStyle(
                             fontSize: 15,
                             color: Tcolor.primary,
@@ -170,29 +168,30 @@ class _FoodPageState extends State<FoodPage> {
                 SizedBox(
                   height: 40.h,
                   child: ListView(
-                      scrollDirection: Axis.horizontal,
-                      children:
-                          List.generate(widget.food.foodTags.length, (index) {
-                        final tag = widget.food.foodTags[index];
-                        return Container(
-                          margin: EdgeInsets.only(right: 10.w),
-                          decoration: BoxDecoration(
-                              color: Tcolor.primary,
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(15.r))),
-                          child: Center(
-                            child: Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 10.w),
-                              child: ReuseableText(
-                                  title: tag,
-                                  style: TextStyle(
-                                      fontSize: 11,
-                                      color: Tcolor.white,
-                                      fontWeight: FontWeight.w500)),
-                            ),
+                    scrollDirection: Axis.horizontal,
+                    children:
+                        List.generate(widget.food.foodTags.length, (index) {
+                      final tag = widget.food.foodTags[index];
+                      return Container(
+                        margin: EdgeInsets.only(right: 10.w),
+                        decoration: BoxDecoration(
+                            color: Tcolor.primary,
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(15.r))),
+                        child: Center(
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 10.w),
+                            child: ReuseableText(
+                                title: tag,
+                                style: TextStyle(
+                                    fontSize: 11,
+                                    color: Tcolor.white,
+                                    fontWeight: FontWeight.w500),),
                           ),
-                        );
-                      })),
+                        ),
+                      );
+                    }),
+                  ),
                 ),
                 SizedBox(
                   height: 40.h,
@@ -204,26 +203,37 @@ class _FoodPageState extends State<FoodPage> {
                       color: Tcolor.Text,
                       fontWeight: FontWeight.w600),
                 ),
-                Column(
-                  children: List.generate(widget.food.additive.length, (index) {
-                    final additive = widget.food.additive[index];
-                    // Check if the additive is a Map (which is expected based on your JSON structure)
-                    if (additive is Map<String, Additive>) {
-                      final title = additive.title;
-                      final price = additive.price;
-                      // You can now use title and price in your UI
+                SizedBox(
+                  height: 35.h,
+                ),
+               Obx(() =>  Column(
+                  children: List.generate(controller.additivesList.length, (index) {
+                    final additive = controller.additivesList[index];
+                    if (controller.additivesList.isEmpty) {
+                      return Container(
+                        child: 
+                          ReuseableText(
+                            title: "No Additives",
+                            style: TextStyle(
+                                fontSize: 40.h,
+                                fontWeight: FontWeight.w500,
+                                color: Tcolor.Text),
+                          ),
+                        
+                      );
+                    } else {
                       return CheckboxListTile(
                         contentPadding: EdgeInsets.zero,
                         visualDensity: VisualDensity.compact,
                         dense: true,
                         activeColor: Tcolor.primary,
-                        value: true,
+                        value: additive.isChecked.value,
                         tristate: false,
                         title: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             ReuseableText(
-                              title: title,
+                              title: additive.title,
                               style: TextStyle(
                                 fontSize: 14,
                                 color: Tcolor.Text,
@@ -234,7 +244,7 @@ class _FoodPageState extends State<FoodPage> {
                               height: 20.h,
                             ),
                             ReuseableText(
-                              title: "\u20A6 $price",
+                              title: "\u20A6 ${additive.price}",
                               style: TextStyle(
                                 fontSize: 11,
                                 color: Tcolor.primary,
@@ -243,14 +253,14 @@ class _FoodPageState extends State<FoodPage> {
                             ),
                           ],
                         ),
-                        onChanged: (bool? value) {},
+                        onChanged: (bool? value) {
+                          additive.toggleChecked();
+                          controller.getTotalPrice();
+                        },
                       );
-                    } else {
-                      // Handle the case where the additive is not in the expected format
-                      return const SizedBox(); // or any other fallback widget
                     }
                   }),
-                ),
+                ),),
                 const SizedBox(
                   height: 30,
                 ),
@@ -438,7 +448,7 @@ class _FoodPageState extends State<FoodPage> {
                   CustomButton(
                     title: "Verify Phone Number",
                     btnHeight: 70.h,
-                    onTap: (){
+                    onTap: () {
                       Get.to(() => const PhoneVerificationPage());
                     },
                   ),

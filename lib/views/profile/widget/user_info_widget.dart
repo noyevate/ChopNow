@@ -1,4 +1,5 @@
 import 'package:chopnow/common/color_extension.dart';
+import 'package:chopnow/models/login_response_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
@@ -9,15 +10,17 @@ class UserInfoWidget extends StatelessWidget {
   final String email;
   final VoidCallback? onEditPressed;
   final Color? color;
+  
 
   const UserInfoWidget({
     Key? key,
     required this.imageUrl,
     required this.name,
     required this.email,
-    this.onEditPressed, this.color,
+    this.onEditPressed, this.color, this.user,
   }) : super(key: key);
 
+  final LoginResponseModel? user;
   @override
   Widget build(BuildContext context) {
     return Container(

@@ -9,7 +9,7 @@ class Tcolor{
   static Color get textField => const Color(0xffDBCDB2);
   static Color get placeHolder => const Color.fromARGB(255, 226, 225, 222);
   static Color get white => const Color(0xffffffff);
-  static Color get Lightwhite => const Color.fromRGBO(220, 211, 211, 0.047);
+  static Color get Lightwhite => Color.fromARGB(10, 207, 197, 197);
   static Color get Text => const Color(0xff413E34);
   static Color get red => const Color.fromARGB(255, 233, 14, 14);
   static Color get purplr => const Color.fromARGB(200, 132, 239, 50);
