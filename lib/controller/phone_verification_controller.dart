@@ -10,6 +10,8 @@ import 'package:chopnow/models/login_response_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:chopnow/views/entrypoint.dart';
+
 import 'package:http/http.dart' as http;
 
 class PhoneVerificationController extends GetxController {
@@ -66,7 +68,8 @@ class PhoneVerificationController extends GetxController {
             backgroundColor: Tcolor.primary,
             icon: const Icon(Ionicons.fast_food_outline));
 
-        Get.back();
+        Get.offAll(() => MainScreen());
+        setLoading = false;
 
         
       } else {
