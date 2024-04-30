@@ -65,8 +65,8 @@ class RestaurantWidget extends StatelessWidget {
                                   child: Image.network(
                                     logo,
                                     fit: BoxFit.cover,
-                                    width: 20.w,
-                                    height: 20.w,
+                                    width: 50.w,
+                                    height: 50.w,
                                   ),
                                 ),
                               ),
@@ -89,6 +89,7 @@ class RestaurantWidget extends StatelessWidget {
                         ],
                       ),
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           RatingBarIndicator(
                             rating: 5,

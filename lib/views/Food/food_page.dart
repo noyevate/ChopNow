@@ -7,8 +7,11 @@ import 'package:chopnow/common/custom_button.dart';
 import 'package:chopnow/common/size.dart';
 import 'package:chopnow/common_widget/reusable_text.dart';
 import 'package:chopnow/controller/food_controller.dart';
+import 'package:chopnow/controller/login_controller.dart';
 import 'package:chopnow/hooks/fetch_restaurant.dart';
 import 'package:chopnow/models/food_model.dart';
+import 'package:chopnow/models/login_response_model.dart';
+import 'package:chopnow/views/auth/Login/login_page.dart';
 import 'package:chopnow/views/auth/phone_verification_page.dart';
 import 'package:chopnow/views/restaurant/restaurant_page.dart';
 import 'package:flutter/material.dart';
@@ -31,8 +34,13 @@ class _FoodPageState extends State<FoodPage> {
   final TextEditingController _preferences = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    LoginResponseModel? user;
     final hookResult = useFetchRestaurant(widget.food.restaurant);
     final controller = Get.put(FoodController());
+    final loginController = Get.put(LoginController());
+
+
+    user = loginController.getUserInfo();
     controller.loadAdditives(widget.food.additive);
 
     return Scaffold(
@@ -114,7 +122,7 @@ class _FoodPageState extends State<FoodPage> {
                               restaurant: hookResult.data,
                             ));
                       },
-                      btnWidth: 180.w,
+                      btnWidth: 250.w,
                       title: "Open Restaurant",
                     ))
               ],
@@ -349,7 +357,14 @@ class _FoodPageState extends State<FoodPage> {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          showVerificationSheet(context);
+                          if(user == null){
+                            Get.to(() => const LoginPage());
+                          } else if(user.phoneVerification == false){
+                            showVerificationSheet(context);
+                          } else {
+                            print("Place Order");
+                          }
+                          
                         },
                         child: Padding(
                           padding: EdgeInsets.symmetric(horizontal: 20.w),
@@ -452,10 +467,21 @@ class _FoodPageState extends State<FoodPage> {
                       Get.to(() => const PhoneVerificationPage());
                     },
                   ),
+                  Container(
+                    height: 100.h,
+                    color: Tcolor.white,
+                    child: SizedBox(
+                      height: 59.h,
+                    ),
+
+                  )
+                  
                 ],
               ),
             ),
+            
           ),
+          
         );
       },
     );

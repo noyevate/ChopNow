@@ -8,6 +8,7 @@ class SupportPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: const Text('Support'),
         backgroundColor: Tcolor.textField,
       ),

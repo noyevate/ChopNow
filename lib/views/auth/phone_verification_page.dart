@@ -1,4 +1,5 @@
 import 'package:chopnow/common/color_extension.dart';
+import 'package:chopnow/common/size.dart';
 import 'package:chopnow/controller/phone_verification_controller.dart';
 import 'package:chopnow/services/verification_services.dart';
 import 'package:flutter/material.dart';
@@ -41,9 +42,14 @@ class _PhoneVerificationPageState extends State<PhoneVerificationPage> {
                 _submitVerificationCode(value);
               },
             )
-          : const Center(
-              child: CircularProgressIndicator(),
-            ),
+          :  Container(
+            color: Tcolor.white,
+            height: height,
+            width: width,
+            child: const Center(
+                child: CircularProgressIndicator(),
+              ),
+          ),
     );
   }
 

@@ -1,7 +1,7 @@
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-String googleApiKey = '';
+String googleApiKey = 'AIzaSyB_tADRTzPgH0QK7aIJMkurXbT-ZZjPOac';
 
 double height = 1640.h;
 double width = 720.w;

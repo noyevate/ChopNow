@@ -43,16 +43,15 @@ class _RegistrationPageState extends State<RegistrationPage> {
     final controller = Get.put(RegistrationController());
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         elevation: 0,
         backgroundColor: Tcolor.primary,
-        title: Center(
-          child: ReuseableText(
-              title: "Chop Now",
-              style: TextStyle(
-                  fontSize: 50.h,
-                  color: Tcolor.Text,
-                  fontWeight: FontWeight.bold)),
-        ),
+        title: ReuseableText(
+            title: "Chop Now",
+            style: TextStyle(
+                fontSize: 50.h,
+                color: Tcolor.Text,
+                fontWeight: FontWeight.bold)),
       ),
       body: BackgroundContainer(
         color: Tcolor.Lightwhite,

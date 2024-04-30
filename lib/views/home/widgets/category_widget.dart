@@ -40,6 +40,7 @@ class CategoryWidget extends StatelessWidget {
             margin: EdgeInsets.only(right: 20.w),
             padding: EdgeInsets.only(top: 4.h),
             width: width * 0.19,
+            
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15.r),
               border: Border.all(
@@ -51,7 +52,7 @@ class CategoryWidget extends StatelessWidget {
             child: Column(
               children: [
                 SizedBox(
-                  height: 120.h,
+                  height: 80.h,
                   child: Image.network(category.imageUrl),
                 ),
                 const SizedBox(
@@ -62,7 +63,7 @@ class CategoryWidget extends StatelessWidget {
                     style: TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.w500,
-                        color: Tcolor.Text))
+                        color: Tcolor.Text),)
               ],
             ),
           ),

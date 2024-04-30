@@ -6,6 +6,7 @@ import 'package:chopnow/controller/login_controller.dart';
 import 'package:chopnow/models/login_response_model.dart';
 import 'package:chopnow/views/auth/Login/login_page.dart';
 import 'package:chopnow/views/auth/verification_page.dart';
+import 'package:chopnow/views/profile/shipping_adress.dart';
 import 'package:chopnow/views/profile/widget/profile_appbar.dart';
 import 'package:chopnow/views/profile/widget/profile_tile_widget.dart';
 import 'package:chopnow/views/profile/widget/user_info_widget.dart';
@@ -107,10 +108,15 @@ class ProfilePage extends StatelessWidget {
                     ),
                     child: ListView(
                       padding: EdgeInsets.zero,
-                      //physics: const NeverScrollableScrollPhysics(),
+                      physics: const NeverScrollableScrollPhysics(),
                       children: [
                         ProfileTileWidget(
-                          onTap: () {},
+                          onTap: () {
+                            Get.to(() => const ShippingAddress(),
+                              transition: Transition.rightToLeft,
+                              duration: const Duration(milliseconds: 900)
+                            );
+                          },
                           title: "Shipping Address",
                           icon: SimpleLineIcons.location_pin,
                         ),

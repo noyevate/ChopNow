@@ -29,6 +29,7 @@ class _SearchPageState extends State<SearchPage> {
       () => Scaffold(
           backgroundColor: Tcolor.white,
           appBar: AppBar(
+            centerTitle: true,
             elevation: 0,
             toolbarHeight: 200.h,
             automaticallyImplyLeading: false,

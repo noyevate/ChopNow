@@ -23,10 +23,12 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(CategoryController());
+    
     return Scaffold(
         appBar: const CustomAppBar(
+          
           // Use your custom app bar
-          //leftAvatarImageUrl: 'https://fecofoods.com.ng/cook-delicious-amala.png',
+          image: 'https://firebasestorage.googleapis.com/v0/b/thetestapp-8449c.appspot.com/o/Icon.jpg?alt=media&token=6e964429-01f2-434d-8032-5f6b7f9fd7df',
           //rightAvatarImageUrl: 'right_avatar_image_url',
           deliverToText: 'Deliver to: ',
           childText: 'No 5, makoko Ave. Lagos',

@@ -30,7 +30,9 @@ class CartPage extends StatelessWidget {
     }
 
     return Scaffold(
+      
         appBar: AppBar(
+          centerTitle: true,
           title: const Text('Cart'),
           backgroundColor: Tcolor.textField,
         ),

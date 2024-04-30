@@ -18,7 +18,7 @@ class NearbyRestaurantsList extends HookWidget {
     final isLoading = hookResults.isLoading;
 
     return isLoading ? const RestaurantShimmer() : Container(
-      height: 260.h,
+      height: 290.h,
       padding: EdgeInsets.only(left: 12.w, top: 10.h),
         child:  ListView(
           scrollDirection: Axis.horizontal,
