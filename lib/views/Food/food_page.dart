@@ -6,14 +6,18 @@ import 'package:chopnow/common/common_textfield.dart';
 import 'package:chopnow/common/custom_button.dart';
 import 'package:chopnow/common/size.dart';
 import 'package:chopnow/common_widget/reusable_text.dart';
+import 'package:chopnow/controller/cart_controller.dart';
 import 'package:chopnow/controller/food_controller.dart';
 import 'package:chopnow/controller/login_controller.dart';
 import 'package:chopnow/hooks/fetch_restaurant.dart';
+import 'package:chopnow/models/crt_request_model.dart';
 import 'package:chopnow/models/food_model.dart';
 import 'package:chopnow/models/login_response_model.dart';
+import 'package:chopnow/models/order_request.dart';
+import 'package:chopnow/models/restaurant.dart';
+import 'package:chopnow/views/Orders/order_page.dart';
 import 'package:chopnow/views/auth/Login/login_page.dart';
 import 'package:chopnow/views/auth/phone_verification_page.dart';
-import 'package:chopnow/views/restaurant/restaurant_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -36,9 +40,10 @@ class _FoodPageState extends State<FoodPage> {
   Widget build(BuildContext context) {
     LoginResponseModel? user;
     final hookResult = useFetchRestaurant(widget.food.restaurant);
+    RestaurantModel? restuarant = hookResult.data;
     final controller = Get.put(FoodController());
     final loginController = Get.put(LoginController());
-
+    final cart_controller = Get.put(CartController());
 
     user = loginController.getUserInfo();
     controller.loadAdditives(widget.food.additive);
@@ -113,18 +118,18 @@ class _FoodPageState extends State<FoodPage> {
                     ),
                   ),
                 ),
-                Positioned(
-                    bottom: 10.h,
-                    right: 24.w,
-                    child: CustomButton(
-                      onTap: () {
-                        Get.to(() => RestaurantPage(
-                              restaurant: hookResult.data,
-                            ));
-                      },
-                      btnWidth: 250.w,
-                      title: "Open Restaurant",
-                    ))
+                // Positioned(
+                //     bottom: 10.h,
+                //     right: 24.w,
+                //     child: CustomButton(
+                //       onTap: () {
+                //         Get.to(() => RestaurantPage(
+                //               restaurant: hookResult.data,
+                //             ));
+                //       },
+                //       btnWidth: 250.w,
+                //       title: "Open Restaurant",
+                //     ),)
               ],
             ),
           ),
@@ -149,7 +154,7 @@ class _FoodPageState extends State<FoodPage> {
                     Obx(
                       () => ReuseableText(
                         title:
-                            "\u20A6 ${((widget.food.price + controller.additivePrice ) * controller.count.value)}",
+                            "\u20A6 ${((widget.food.price + controller.additivePrice) * controller.count.value)}",
                         style: TextStyle(
                             fontSize: 15,
                             color: Tcolor.primary,
@@ -190,11 +195,12 @@ class _FoodPageState extends State<FoodPage> {
                           child: Padding(
                             padding: EdgeInsets.symmetric(horizontal: 10.w),
                             child: ReuseableText(
-                                title: tag,
-                                style: TextStyle(
-                                    fontSize: 11,
-                                    color: Tcolor.white,
-                                    fontWeight: FontWeight.w500),),
+                              title: tag,
+                              style: TextStyle(
+                                  fontSize: 11,
+                                  color: Tcolor.white,
+                                  fontWeight: FontWeight.w500),
+                            ),
                           ),
                         ),
                       );
@@ -214,61 +220,64 @@ class _FoodPageState extends State<FoodPage> {
                 SizedBox(
                   height: 35.h,
                 ),
-               Obx(() =>  Column(
-                  children: List.generate(controller.additivesList.length, (index) {
-                    final additive = controller.additivesList[index];
-                    if (controller.additivesList.isEmpty) {
-                      return Container(
-                        child: 
-                          ReuseableText(
+                Obx(
+                  () => Column(
+                    children:
+                        List.generate(controller.additivesList.length, (index) {
+                      final additive = controller.additivesList[index];
+                      if (controller.additivesList.isEmpty) {
+                        return Container(
+                          child: ReuseableText(
                             title: "No Additives",
                             style: TextStyle(
                                 fontSize: 40.h,
                                 fontWeight: FontWeight.w500,
                                 color: Tcolor.Text),
                           ),
-                        
-                      );
-                    } else {
-                      return CheckboxListTile(
-                        contentPadding: EdgeInsets.zero,
-                        visualDensity: VisualDensity.compact,
-                        dense: true,
-                        activeColor: Tcolor.primary,
-                        value: additive.isChecked.value,
-                        tristate: false,
-                        title: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            ReuseableText(
-                              title: additive.title,
-                              style: TextStyle(
-                                fontSize: 14,
-                                color: Tcolor.Text,
-                                fontWeight: FontWeight.w400,
+                        );
+                      } else {
+                        return CheckboxListTile(
+                          contentPadding: EdgeInsets.zero,
+                          visualDensity: VisualDensity.compact,
+                          dense: true,
+                          activeColor: Tcolor.primary,
+                          value: additive.isChecked.value,
+                          tristate: false,
+                          title: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              ReuseableText(
+                                title: additive.title,
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  color: Tcolor.Text,
+                                  fontWeight: FontWeight.w400,
+                                ),
                               ),
-                            ),
-                            SizedBox(
-                              height: 20.h,
-                            ),
-                            ReuseableText(
-                              title: "\u20A6 ${additive.price}",
-                              style: TextStyle(
-                                fontSize: 11,
-                                color: Tcolor.primary,
-                                fontWeight: FontWeight.w600,
+                              SizedBox(
+                                height: 20.h,
                               ),
-                            ),
-                          ],
-                        ),
-                        onChanged: (bool? value) {
-                          additive.toggleChecked();
-                          controller.getTotalPrice();
-                        },
-                      );
-                    }
-                  }),
-                ),),
+                              ReuseableText(
+                                title: "\u20A6 ${additive.price}",
+                                style: TextStyle(
+                                  fontSize: 11,
+                                  color: Tcolor.primary,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ],
+                          ),
+                          onChanged: (bool? value) {
+                            additive.toggleChecked();
+                            controller.getTotalPrice();
+                            controller.getList();
+                            print(controller.getList());
+                          },
+                        );
+                      }
+                    }),
+                  ),
+                ),
                 const SizedBox(
                   height: 30,
                 ),
@@ -357,14 +366,30 @@ class _FoodPageState extends State<FoodPage> {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          if(user == null){
+                          if (user == null) {
                             Get.to(() => const LoginPage());
-                          } else if(user.phoneVerification == false){
+                          } else if (user.phoneVerification == false) {
                             showVerificationSheet(context);
                           } else {
-                            print("Place Order");
+                            int price =
+                                (widget.food.price + controller.additivePrice) *
+                                    controller.count.value;
+                            OrderItem item = OrderItem(
+                                foodId: widget.food.id,
+                                quantity: controller.count.value,
+                                price: price,
+                                additives: controller.getList(),
+                                instruction: _preferences.text);
+                            // create order
+                            Get.to(
+                                () => OrderPage(
+                                      restuarant: restuarant,
+                                      food: widget.food,
+                                      item: item,
+                                    ),
+                                transition: Transition.cupertino,
+                                duration: const Duration(microseconds: 600));
                           }
-                          
                         },
                         child: Padding(
                           padding: EdgeInsets.symmetric(horizontal: 20.w),
@@ -378,7 +403,20 @@ class _FoodPageState extends State<FoodPage> {
                         ),
                       ),
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          int price =
+                              (widget.food.price + controller.additivePrice) *
+                                  controller.count.value;
+                          var data = CartRequest(
+                            productId: widget.food.id,
+                            additives: controller.getList(),
+                            quantity: controller.count.value,
+                            totalPrice: price,
+                          );
+                          String cart = cartRequestToJson(data);
+
+                          cart_controller.addToCart(cart);
+                        },
                         child: CircleAvatar(
                           backgroundColor: Tcolor.white,
                           radius: 35.r,
@@ -473,15 +511,11 @@ class _FoodPageState extends State<FoodPage> {
                     child: SizedBox(
                       height: 59.h,
                     ),
-
                   )
-                  
                 ],
               ),
             ),
-            
           ),
-          
         );
       },
     );

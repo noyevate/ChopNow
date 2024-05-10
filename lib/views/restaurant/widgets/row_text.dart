@@ -1,15 +1,18 @@
 import 'package:chopnow/common/color_extension.dart';
 import 'package:chopnow/common_widget/reusable_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class RowText extends StatelessWidget {
   const RowText({
     super.key,
     required this.first,
-    required this.second,
+    required this.second, this.textAlign,
   });
   final String first;
   final String second;
+  final TextAlign? textAlign;
+  
 
   @override
   Widget build(BuildContext context) {
@@ -18,16 +21,18 @@ class RowText extends StatelessWidget {
       children: [
         ReuseableText(
           title: first,
+          textAlign: textAlign,
           style: TextStyle(
-            fontSize: 13,
+            fontSize: 26.sp,
             fontWeight: FontWeight.w500,
             color: Tcolor.Text,
+            
           ),
         ),
         ReuseableText(
           title: second,
           style: TextStyle(
-            fontSize: 13,
+            fontSize: 26.sp,
             fontWeight: FontWeight.w500,
             color: Tcolor.Text,
           ),

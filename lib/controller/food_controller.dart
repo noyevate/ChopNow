@@ -43,6 +43,17 @@ class FoodController extends GetxController {
     }
     
   }
+  List<Additive> getSelectedAdditives() {
+  return additivesList
+      .where((additive) => additive.isChecked.value)
+      .map((additive) => Additive(
+            id: additive.id,
+            title: additive.title,
+            price: additive.price,
+          ))
+      .toList();
+  }
+   
 
   List<String> getList() {
     List<String>ads = [];
@@ -57,22 +68,24 @@ class FoodController extends GetxController {
   }
 
 
-  RxDouble _totalPrice = 0.0.obs;
+  RxInt _totalPrice = 0.obs;
 
-  double get additivePrice => _totalPrice.value;
-  set setTotalPrice(double newPrice) {
+  int get additivePrice => _totalPrice.value;
+  set setTotalPrice(int newPrice) {
     _totalPrice.value = newPrice;
   }
 
 
-  double getTotalPrice() {
-    double totalPrice = 0.0;
+  int getTotalPrice() {
+    int totalPrice = 0;
     for(var additive in additivesList) {
       if(additive.isChecked.value){
-        totalPrice += double.tryParse(additive.price) ?? 0.0;
+        totalPrice += int.tryParse(additive.price) ?? 0;
       }
     }
     setTotalPrice = totalPrice;
     return totalPrice;
   }
+
+  
 }

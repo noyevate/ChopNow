@@ -9,7 +9,7 @@ class CategoryShimmer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 70.h,
-      padding: const EdgeInsets.only(left: 12, top: 10),
+      padding: const EdgeInsets.only(left: 10, top: 10, bottom: 10, right: 10 ),
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: 6, // Assuming there are 5 shimmer placeholders

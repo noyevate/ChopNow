@@ -22,13 +22,14 @@ class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {
 
   @override
   Size get preferredSize =>
-      const Size.fromHeight(60); // Increase the size of the app bar
+      const Size.fromHeight(60); 
+      
 }
+
 
 class _CustomAppBarState extends State<CustomAppBar> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _determinePosition();
   }
@@ -75,6 +76,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
       ),
     );
   }
+  
 
   String getTimeOfDay() {
     final now = DateTime.now();
@@ -142,3 +144,6 @@ class _CustomAppBarState extends State<CustomAppBar> {
     controller.getUserAddress(currentLocation);
   }
 }
+
+
+

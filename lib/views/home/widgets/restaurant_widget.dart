@@ -71,7 +71,7 @@ class RestaurantWidget extends StatelessWidget {
                                 ),
                               ),
                             ),
-                          ))
+                          ),)
                     ],
                   ),
                 ),

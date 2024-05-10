@@ -2,7 +2,7 @@ import 'package:chopnow/common/color_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class CustomTextWidget extends StatelessWidget {
+class CustomTextWidget extends StatelessWidget  {
   const CustomTextWidget(
       {super.key,
       this.keyboardType,
@@ -27,11 +27,12 @@ class CustomTextWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: 100.h,
       margin: EdgeInsets.all(6.h),
       padding: EdgeInsets.only(left: 6.h),
       decoration: BoxDecoration(
           border: Border.all(color: Tcolor.primary, width: 1.5),
-          borderRadius: BorderRadius.circular(20.r)),
+          borderRadius: BorderRadius.circular(15.r)),
       child: TextFormField(
         maxLines: maxLines??5,
         keyboardType: keyboardType,

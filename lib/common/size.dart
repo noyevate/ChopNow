@@ -1,7 +1,7 @@
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-String googleApiKey = 'AIzaSyB_tADRTzPgH0QK7aIJMkurXbT-ZZjPOac';
+String googleApiKey = 'AIzaSyDmousZ47HF2dMt9yIwzMaGmlPcTfQhPiI';
 
 double height = 1640.h;
 double width = 720.w;
@@ -14,4 +14,13 @@ final List<String> verificationReasons = [
   "Enhanced Security: Protect your account and confirm account securely.",
   "Effortless Rescheduling: Easily Address issues with a quck call",
   "Exclusive Offers: Stay in the loop for special deals and promotions."
+];
+
+List<String> orderList = [
+  "Pending",
+  "Paid",
+  "Preparing",
+  "Delivering",
+  "Delivered",
+  "Cancelled",
 ];

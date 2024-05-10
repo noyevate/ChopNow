@@ -1,5 +1,6 @@
 // ignore_for_file: must_be_immutable
 
+import 'package:chopnow/common/color_extension.dart';
 import 'package:chopnow/common/size.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -24,7 +25,7 @@ class CustomContainer extends StatelessWidget {
         // ignore: sized_box_for_whitespace
         child: Container(
           width: width,
-          // color: color ?? Tcolor.white,
+          color: color ?? Tcolor.white,
           child: SingleChildScrollView(
             child: containerContent,
           ),

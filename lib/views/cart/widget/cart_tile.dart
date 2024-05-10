@@ -2,27 +2,26 @@ import 'package:chopnow/common/color_extension.dart';
 import 'package:chopnow/common/size.dart';
 import 'package:chopnow/common_widget/reusable_text.dart';
 import 'package:chopnow/controller/cart_controller.dart';
-import 'package:chopnow/models/crt_request_model.dart';
-import 'package:chopnow/models/food_model.dart';
-import 'package:chopnow/views/Food/food_page.dart';
+import 'package:chopnow/models/cart_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:get/get.dart';
 
-class FoodTile extends StatelessWidget {
-  const FoodTile({super.key, required this.food, this.color});
+class CartTile extends StatelessWidget {
+  const CartTile({super.key, this.color, required this.cart, this.refetch});
 
-  final FoodModel food;
+  final CartResponse cart;
   final Color? color;
+  final Function()? refetch;
 
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(CartController());
     return GestureDetector(
       onTap: () {
-        Get.to(() => FoodPage(food: food));
+        // Get.to(() => FoodPage(food: food));
       },
       child: Stack(
         clipBehavior: Clip.hardEdge,
@@ -47,7 +46,7 @@ class FoodTile extends StatelessWidget {
                           width: 70,
                           height: 70,
                           child: Image.network(
-                            food.imageUrl[0],
+                            cart.productId.imageUrl[0],
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -79,14 +78,14 @@ class FoodTile extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       ReuseableText(
-                        title: food.title,
+                        title: cart.productId.title,
                         style: TextStyle(
                             fontSize: 13,
                             color: Tcolor.Text,
                             fontWeight: FontWeight.w400),
                       ),
                       ReuseableText(
-                        title: "Delivery time: ${food.time}",
+                        title: "Quantity: ${cart.quantity}",
                         style: TextStyle(
                             fontSize: 13,
                             color: Tcolor.secondaryText,
@@ -98,9 +97,9 @@ class FoodTile extends StatelessWidget {
                         height: 30.h,
                         child: ListView.builder(
                             scrollDirection: Axis.horizontal,
-                            itemCount: food.additive.length,
+                            itemCount: cart.additives.length,
                             itemBuilder: (context, i) {
-                              var additives = food.additive[i];
+                              var additive = cart.additives[i];
                               return Container(
                                 margin: EdgeInsets.only(right: 10.w),
                                 decoration: BoxDecoration(
@@ -112,7 +111,7 @@ class FoodTile extends StatelessWidget {
                                 child: Center(
                                   child: Padding(
                                     padding: EdgeInsets.all(4.h),
-                                    child: ReuseableText(title: additives.title, style: TextStyle(
+                                    child: ReuseableText(title: additive, style: TextStyle(
                                       fontSize: 10,color: Tcolor.primary, fontWeight: FontWeight.w400
                                     ),),
                                   ),
@@ -137,7 +136,7 @@ class FoodTile extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10.r)),
               child: Center(
                 child: ReuseableText(
-                  title: "\u20A6${food.price.toString()}",
+                  title: "\u20A6${cart.totalPrice.toString()}",
                   style: TextStyle(
                       fontSize: 12,
                       color: Tcolor.white,
@@ -151,24 +150,18 @@ class FoodTile extends StatelessWidget {
             top: 3.h,
             child: GestureDetector(
               onTap: () {
-                var data = CartRequest(
-                  productId: food.id, 
-                  additives: [], 
-                  quantity: 1, 
-                  totalPrice: food.price
-                );
-                String cart = cartRequestToJson(data);
-                controller.addToCart(cart);
+
+                controller.removeFromCart(cart.id, refetch!);
               },
               child: Container(
                 width: 40.w,
                 height: 40.h,
                 decoration: BoxDecoration(
-                    color: Tcolor.primary,
+                    color: Tcolor.red,
                     borderRadius: BorderRadius.circular(10.r)),
                 child: Center(
                   child: Icon(
-                    MaterialCommunityIcons.cart_plus,
+                    MaterialCommunityIcons.trash_can,
                     size: 40.h,
                     color: Tcolor.white,
                   ),

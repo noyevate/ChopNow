@@ -93,11 +93,13 @@ class Additive {
     final int id;
     final String title;
     final String price;
+    //bool isChecked;
 
     Additive({
         required this.id,
         required this.title,
         required this.price,
+        //this.isChecked = false,
     });
 
     factory Additive.fromJson(Map<String, dynamic> json) => Additive(
@@ -105,6 +107,8 @@ class Additive {
         title: json["title"],
         price: json["price"],
     );
+
+  
 
     Map<String, dynamic> toJson() => {
         "id": id,

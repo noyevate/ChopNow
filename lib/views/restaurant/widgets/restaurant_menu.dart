@@ -26,10 +26,11 @@ class RestaurantMenuWidget extends HookWidget {
               height: height * 0.7,
               child: ListView(
                 padding: EdgeInsets.zero,
-                  children: List.generate(foods.length, (index) {
-                final FoodModel food = foods[index];
-                return FoodTile(food: food);
-              }),),
+                children: List.generate(foods.length, (index) {
+                  final FoodModel food = foods[index];
+                  return FoodTile(food: food);
+                }),
+              ),
             ),
     );
   }

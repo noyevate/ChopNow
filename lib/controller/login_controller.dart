@@ -48,6 +48,7 @@ class LoginController extends GetxController {
         Get.snackbar("You are successfully logged in",
             "Bon appétit! Get ready to savor tasty treats with us.",
             colorText: Tcolor.Text,
+            duration: const Duration(seconds: 3),
             backgroundColor: Tcolor.primary,
             icon: const Icon(Ionicons.fast_food_outline));
 
@@ -67,6 +68,7 @@ class LoginController extends GetxController {
         Get.snackbar("Failed to Login",
             error.message,
             colorText: Tcolor.white,
+            duration: const Duration(seconds: 3),
             backgroundColor: Tcolor.red,
             icon: const Icon(Icons.error_outline));
       }
@@ -96,3 +98,8 @@ class LoginController extends GetxController {
     return null;
   }
 }
+
+
+
+
+

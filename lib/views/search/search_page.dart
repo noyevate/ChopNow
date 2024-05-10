@@ -31,12 +31,13 @@ class _SearchPageState extends State<SearchPage> {
           appBar: AppBar(
             centerTitle: true,
             elevation: 0,
-            toolbarHeight: 200.h,
+            toolbarHeight: 100.h,
             automaticallyImplyLeading: false,
             backgroundColor: Tcolor.white,
             title: Padding(
-              padding: EdgeInsets.only(top: 35.h),
+              padding: EdgeInsets.only(top: 20.h),
               child: CustomTextWidget(
+                
                 controller: _searchController,
                 hintText: "Search for foods...",
                 keyboardType: TextInputType.text,
@@ -64,6 +65,7 @@ class _SearchPageState extends State<SearchPage> {
                     ),
               ),
             ),
+            
           ),
           body: SafeArea(
               child: CustomContainer(
@@ -72,7 +74,7 @@ class _SearchPageState extends State<SearchPage> {
                       : controller.searchResults == null
                           ? const LoadngWidget()
                           : const SearchResult(),
-          ),
+                        ),
         ),
       ),
     );

@@ -6,6 +6,8 @@ import 'package:chopnow/controller/login_controller.dart';
 import 'package:chopnow/models/login_response_model.dart';
 import 'package:chopnow/views/auth/Login/login_page.dart';
 import 'package:chopnow/views/auth/verification_page.dart';
+import 'package:chopnow/views/Orders/order.dart';
+import 'package:chopnow/views/profile/addresses_page.dart';
 import 'package:chopnow/views/profile/shipping_adress.dart';
 import 'package:chopnow/views/profile/widget/profile_appbar.dart';
 import 'package:chopnow/views/profile/widget/profile_tile_widget.dart';
@@ -75,7 +77,7 @@ class ProfilePage extends StatelessWidget {
                       children: [
                         ProfileTileWidget(
                           onTap: () {
-                            Get.to(() => const LoginPage());
+                            //Get.to(() => const Orders());
                           },
                           title: "My Orders",
                           icon: Ionicons.fast_food_outline,
@@ -112,7 +114,7 @@ class ProfilePage extends StatelessWidget {
                       children: [
                         ProfileTileWidget(
                           onTap: () {
-                            Get.to(() => const ShippingAddress(),
+                            Get.to(() => const Addresses(),
                               transition: Transition.rightToLeft,
                               duration: const Duration(milliseconds: 900)
                             );
