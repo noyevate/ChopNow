@@ -20,6 +20,7 @@ class OrderTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.put(CartController());
     return Stack(
+      
       clipBehavior: Clip.hardEdge,
       children: [
         Container(

@@ -9,7 +9,9 @@ import 'package:chopnow/common_widget/reusable_text.dart';
 import 'package:chopnow/controller/cart_controller.dart';
 import 'package:chopnow/controller/food_controller.dart';
 import 'package:chopnow/controller/login_controller.dart';
+import 'package:chopnow/hooks/fetch_default_address.dart';
 import 'package:chopnow/hooks/fetch_restaurant.dart';
+import 'package:chopnow/models/address_response.dart';
 import 'package:chopnow/models/crt_request_model.dart';
 import 'package:chopnow/models/food_model.dart';
 import 'package:chopnow/models/login_response_model.dart';
@@ -43,13 +45,20 @@ class _FoodPageState extends State<FoodPage> {
     RestaurantModel? restuarant = hookResult.data;
     final controller = Get.put(FoodController());
     final loginController = Get.put(LoginController());
-    final cart_controller = Get.put(CartController());
+    final cartController = Get.put(CartController());
+    final addressResult = useFetchDefaultAddress();
+    AddressResponseModel? address = addressResult.data;
 
     user = loginController.getUserInfo();
     controller.loadAdditives(widget.food.additive);
+    
 
     return Scaffold(
-      body: ListView(
+      body: user == null
+    ? const Center(
+        child: CircularProgressIndicator(), // or any other loading indicator
+      )
+    : ListView(
         padding: EdgeInsets.zero,
         children: [
           ClipRRect(
@@ -386,6 +395,7 @@ class _FoodPageState extends State<FoodPage> {
                                       restuarant: restuarant,
                                       food: widget.food,
                                       item: item,
+                                      address: address!,
                                     ),
                                 transition: Transition.cupertino,
                                 duration: const Duration(microseconds: 600));
@@ -415,7 +425,7 @@ class _FoodPageState extends State<FoodPage> {
                           );
                           String cart = cartRequestToJson(data);
 
-                          cart_controller.addToCart(cart);
+                          cartController.addToCart(cart);
                         },
                         child: CircleAvatar(
                           backgroundColor: Tcolor.white,

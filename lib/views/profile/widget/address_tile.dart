@@ -44,6 +44,7 @@ class AddressTile extends StatelessWidget {
                 fontSize: 15.sp, color: Tcolor.Secondary, fontWeight: FontWeight.w500),
                 
           ),
+          
         ],
       ),
     );
